@@ -1,0 +1,13 @@
+.input  input, select
+{
+    width: 100%;
+    background: #222;
+    color: white;
+
+}
+select:hover, input:hover
+{
+  opacity: 1.0;
+   filter: alpha(opacity=100);
+
+}
