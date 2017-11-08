@@ -1,0 +1,45 @@
+{% extends 'SERIESAPP/base.html' %}
+{% block content %}
+
+<div class="content container">
+  <div class="row">
+      <div class="col-md-12">
+
+        <a class="w3-button w3-light-grey w3-padding-large fa fa-paper-plane"  href="{% url 'personaje_nuevo' %}">NUEVO</a>
+      </div>
+  </div>
+        <div class="row">
+            <div class="col-md-12">
+
+                <table class="w3-table-all">
+    <thead>
+      <tr class="w3-red w3-hover-red">
+
+        <th>Nombre</th>
+        <th>Edad</th>
+        <th>Raza</th>
+        <th>Descripción</th>
+        <th>Delete</th>
+
+      </tr>
+    </thead>
+
+  {% for personaje in personajes %}
+    <tr class="w3-hover-text-red w3-black">
+      <td><a href="{% url 'personaje_detail' pk=personaje.pk %}">{{  personaje.nombre}}</a></td>
+      <td> {{  personaje.edad}}</td>
+      <td> {{ personaje.raza}}</td>
+      <td> {{  personaje.descripcion}}</td>
+      <td>
+        <a href="{% url 'personaje_delete' pk=personaje.pk %}"><i class="fa fa-ban"></i></a>
+      </td>
+    </tr>
+  {% endfor %}
+  </table>
+</div>
+
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

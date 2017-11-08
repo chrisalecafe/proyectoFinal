@@ -23,31 +23,50 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
   <!-- Avatar image in top left corner -->
   <img src="/static/image/ser.jpg" style="width:100%">
-  <a href="/" class="w3-bar-item w3-button w3-padding-large w3-black">
+  <a href="{% url 'capitulos_list' %}" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
     <i class="fa fa-home w3-xxlarge"></i>
-    <p>nuevo capitulo</p>
+    <p>HOME</p>
   </a>
-  <a href="#about" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <i class="fa fa-user w3-xxlarge"></i>
-    <p>actores</p>
+  <a href="{% url 'capitulo_nuevo' %}" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="fa fa-plus-circle w3-xxlarge"></i>
+    <p>NUEVO CAPITULO</p>
   </a>
-  <a href="#photos" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <i class="fa fa-eye w3-xxlarge"></i>
-    <p>PHOTOS</p>
+  <a href="{% url 'personaje_list' %}" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="fa fa-users w3-xxlarge"></i>
+    <p>PESONAJE</p>
   </a>
-  <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <i class="fa fa-envelope w3-xxlarge"></i>
-    <p>CONTACT</p>
+
+  <a href="{% url 'localidad_list' %}" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="fa fa-map-marker nvar  w3-xxlarge"></i>
+    <p>LOCALIDAD</p>
   </a>
+
+  {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+          <i class="fa fa-sign-out  w3-xxlarge"></i>
+          <p>Hello {{ user.username }}</p>
+        </a>
+        
+    {% else %}
+        <a href="{% url 'login' %}" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+          <i class="fa fa-sign-in  w3-xxlarge"></i>
+          <p>LOGIN</p>
+        </a>
+    {% endif %}
+
+  </a>
+
+
 </nav>
 
 <!-- Navbar on small screens (Hidden on medium and large screens) -->
 <div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
   <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
-    <a href="#" class="w3-bar-item w3-button" style="width:25% !important">HOME</a>
-    <a href="#about" class="w3-bar-item w3-button" style="width:25% !important">ABOUT</a>
-    <a href="#photos" class="w3-bar-item w3-button" style="width:25% !important">PHOTOS</a>
-    <a href="#contact" class="w3-bar-item w3-button" style="width:25% !important">CONTACT</a>
+    <a href="{% url 'capitulos_list' %}" class="w3-bar-item fa fa-home w3-button" style="width:25% !important"></a>
+    <a href="{% url 'capitulo_nuevo' %}" class="w3-bar-item  fa fa-plus w3-button" style="width:25% !important"></a>
+    <a href="" class="w3-bar-item  fa fa-users w3-button" style="width:25% !important"></a>
+    <a href="" class="w3-bar-item  fa fa-map-marker  w3-button" style="width:25% !important"></a>
+
   </div>
 </div>
 
@@ -60,6 +79,8 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
   </header>
 
 <div class="page-header">
+
+
 
                {% if messages %}
                 <ul class="messages">

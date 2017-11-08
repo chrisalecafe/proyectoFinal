@@ -1,0 +1,34 @@
+{% extends 'SERIESAPP/base.html' %}
+{% block content %}
+
+<div class="content container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <table class="w3-table-all">
+    <thead>
+      <tr class="w3-red w3-hover-red">
+
+        <th>Capitulo</th>
+        <th>Serie</th>
+        <th>Delete</th>
+
+      </tr>
+    </thead>
+  {% for capitulo in capitulos %}
+    <tr class="w3-hover-text-red w3-black">
+      <td><a href="{% url 'capitulo_detail' pk=capitulo.pk %}">{{  capitulo.titulo}}</a></td>
+      <td> {{ capitulo.serie}}</td>
+      <td>
+        <a href="{% url 'capitulo_delete' pk=capitulo.pk %}"><i class="fa fa-ban"></i></a>
+      </td>
+    </tr>
+  {% endfor %}
+  </table>
+</div>
+
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

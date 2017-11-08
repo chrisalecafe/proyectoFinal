@@ -8,6 +8,17 @@ class CapituloForm(forms.ModelForm):
         model = Capitulo
         fields = ('titulo', 'serie', 'fecha', 'personajes', 'localidades')
 
+class PersonajeForm(forms.ModelForm):
+    class Meta:
+        model = Personaje
+        fields = ('nombre', 'edad', 'raza', 'descripcion')
+
+class LocalidadForm(forms.ModelForm):
+    class Meta:
+        model = Localidad
+        fields = ('nombre', 'direccion', 'pais', 'descripcion')
+
+
 def __init__ (self, *args, **kwargs):
     super(CapituloForm, self).__init__(*args, **kwargs)
     self.fields["personajes"].widget = forms.widgets.CheckboxSelectMultiple()

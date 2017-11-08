@@ -1,0 +1,12 @@
+{% extends 'SERIESAPP/base.html' %}
+
+
+ {% block content %}
+ <h1>personaje</h1>
+ <form method="POST" class="post-form">{% csrf_token %}
+     {{ formulario.as_p }}
+     <button type="submit" class="w3-button w3-light-grey w3-padding-large fa fa-paper-plane"> Actualizar</button>
+
+ </form>
+
+ {% endblock content %}

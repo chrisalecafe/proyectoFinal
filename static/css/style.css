@@ -5,6 +5,12 @@
     color: white;
 
 }
+.listacap  h1, h4
+{
+    width: 100%;
+    color: white;
+
+}
 select:hover, input:hover
 {
   opacity: 1.0;

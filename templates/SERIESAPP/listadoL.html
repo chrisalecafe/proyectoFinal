@@ -1,0 +1,45 @@
+{% extends 'SERIESAPP/base.html' %}
+{% block content %}
+
+<div class="content container">
+  <div class="row">
+      <div class="col-md-12">
+
+        <a class="w3-button w3-light-grey w3-padding-large fa fa-paper-plane"  href="{% url 'localidad_nuevo' %}">NUEVO</a>
+      </div>
+  </div>
+        <div class="row">
+            <div class="col-md-12">
+
+                <table class="w3-table-all">
+    <thead>
+      <tr class="w3-red w3-hover-red">
+
+        <th>Nombre</th>
+        <th>direccion</th>
+        <th>pais</th>
+        <th>Descripción</th>
+        <th>Delete</th>
+
+      </tr>
+    </thead>
+
+  {% for localidad in localidades %}
+    <tr class="w3-hover-text-red w3-black">
+      <td><a href="{% url 'localidad_detail' pk=localidad.pk %}">{{  localidad.nombre}}</a></td>
+      <td> {{  localidad.direccion}}</td>
+      <td> {{ localidad.pais}}</td>
+      <td> {{  localidad.descripcion}}</td>
+      <td>
+        <a href="{% url 'localidad_delete' pk=localidad.pk %}"><i class="fa fa-ban"></i></a>
+      </td>
+    </tr>
+  {% endfor %}
+  </table>
+</div>
+
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
